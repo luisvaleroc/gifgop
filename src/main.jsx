@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import ReactDOM from 'react-dom/client'
-import GifApp from './GifApp'
+const GifApp = React.lazy(() => import('./GifApp'));
+
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GifApp />
+    <Suspense fallback={<div>Loading...</div>}>
+      <GifApp />
+    </Suspense>
   </React.StrictMode>
 )
